@@ -1,0 +1,549 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<RootNamespace>CarSpawner</RootNamespace>
+		<LangVersion>default</LangVersion>
+		<IsPackable>false</IsPackable>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<AssemblyName>CarSpawner</AssemblyName>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp-firstpass">
+			<HintPath>$(GameAssembliesPath)/Assembly-CSharp-firstpass.dll</HintPath>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>$(GameAssembliesPath)/Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppBidirectionalDictionary">
+			<HintPath>$(GameAssembliesPath)/Il2CppBidirectionalDictionary.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppCoffee.SoftMaskForUGUI.Demo">
+			<HintPath>$(GameAssembliesPath)/Il2CppCoffee.SoftMaskForUGUI.Demo.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppCoffee.SoftMaskForUGUI">
+			<HintPath>$(GameAssembliesPath)/Il2CppCoffee.SoftMaskForUGUI.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2Cppcom.rlabrecque.steamworks.net">
+			<HintPath>$(GameAssembliesPath)/Il2Cppcom.rlabrecque.steamworks.net.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppDynamicSoundController">
+			<HintPath>$(GameAssembliesPath)/Il2CppDynamicSoundController.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppFusion.Addons.SimpleKCC">
+			<HintPath>$(GameAssembliesPath)/Il2CppFusion.Addons.SimpleKCC.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppFusion.Common">
+			<HintPath>$(GameAssembliesPath)/Il2CppFusion.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppFusion.Log">
+			<HintPath>$(GameAssembliesPath)/Il2CppFusion.Log.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppFusion.Realtime">
+			<HintPath>$(GameAssembliesPath)/Il2CppFusion.Realtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppFusion.Runtime">
+			<HintPath>$(GameAssembliesPath)/Il2CppFusion.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppFusion.Sockets">
+			<HintPath>$(GameAssembliesPath)/Il2CppFusion.Sockets.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppFusion.Unity">
+			<HintPath>$(GameAssembliesPath)/Il2CppFusion.Unity.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppGdkUtilities">
+			<HintPath>$(GameAssembliesPath)/Il2CppGdkUtilities.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppGraphAndChart">
+			<HintPath>$(GameAssembliesPath)/Il2CppGraphAndChart.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppLeTai.TranslucentImage">
+			<HintPath>$(GameAssembliesPath)/Il2CppLeTai.TranslucentImage.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppLeTai.TranslucentImage.HDRP">
+			<HintPath>$(GameAssembliesPath)/Il2CppLeTai.TranslucentImage.HDRP.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppMackySoft.SerializeReferenceExtensions">
+			<HintPath>$(GameAssembliesPath)/Il2CppMackySoft.SerializeReferenceExtensions.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2Cppmcs">
+			<HintPath>$(GameAssembliesPath)/Il2Cppmcs.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppMemoryPack.Core">
+			<HintPath>$(GameAssembliesPath)/Il2CppMemoryPack.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppMono.Security">
+			<HintPath>$(GameAssembliesPath)/Il2CppMono.Security.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2Cppmscorlib">
+			<HintPath>$(GameAssembliesPath)/Il2Cppmscorlib.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppNanoSockets">
+			<HintPath>$(GameAssembliesPath)/Il2CppNanoSockets.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppNewtonsoft.Json">
+			<HintPath>$(GameAssembliesPath)/Il2CppNewtonsoft.Json.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppPhoton.Realtime">
+			<HintPath>$(GameAssembliesPath)/Il2CppPhoton.Realtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppPhotonClient">
+			<HintPath>$(GameAssembliesPath)/Il2CppPhotonClient.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppQFSW.QC.Demo">
+			<HintPath>$(GameAssembliesPath)/Il2CppQFSW.QC.Demo.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppQFSW.QC">
+			<HintPath>$(GameAssembliesPath)/Il2CppQFSW.QC.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppQFSW.QC.Extras">
+			<HintPath>$(GameAssembliesPath)/Il2CppQFSW.QC.Extras.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppQFSW.QC.Grammar">
+			<HintPath>$(GameAssembliesPath)/Il2CppQFSW.QC.Grammar.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppQFSW.QC.Parsers">
+			<HintPath>$(GameAssembliesPath)/Il2CppQFSW.QC.Parsers.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppQFSW.QC.ScanRules">
+			<HintPath>$(GameAssembliesPath)/Il2CppQFSW.QC.ScanRules.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppQFSW.QC.Serializers">
+			<HintPath>$(GameAssembliesPath)/Il2CppQFSW.QC.Serializers.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppQFSW.QC.Suggestors">
+			<HintPath>$(GameAssembliesPath)/Il2CppQFSW.QC.Suggestors.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppQFSW.QC.UI">
+			<HintPath>$(GameAssembliesPath)/Il2CppQFSW.QC.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppRedAttributes">
+			<HintPath>$(GameAssembliesPath)/Il2CppRedAttributes.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppRedEvents">
+			<HintPath>$(GameAssembliesPath)/Il2CppRedEvents.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppRuntimeSceneGizmo.Runtime">
+			<HintPath>$(GameAssembliesPath)/Il2CppRuntimeSceneGizmo.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.Collections.Immutable">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.Collections.Immutable.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.Configuration">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.Configuration.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.Core">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.Data">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.Data.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.Drawing">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.Drawing.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.IO.Compression">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.IO.Compression.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.Numerics">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.Numerics.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.Runtime.CompilerServices.Unsafe">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.Runtime.CompilerServices.Unsafe.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.Runtime.Serialization">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.Runtime.Serialization.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.Xml">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.Xml.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppSystem.Xml.Linq">
+			<HintPath>$(GameAssembliesPath)/Il2CppSystem.Xml.Linq.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppTND.Upscaling.Framework.Runtime.Core">
+			<HintPath>$(GameAssembliesPath)/Il2CppTND.Upscaling.Framework.Runtime.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppTND.Upscaling.Framework.Runtime.HDRP">
+			<HintPath>$(GameAssembliesPath)/Il2CppTND.Upscaling.Framework.Runtime.HDRP.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppTND.Upscaling.Framework.Runtime.Injectors">
+			<HintPath>$(GameAssembliesPath)/Il2CppTND.Upscaling.Framework.Runtime.Injectors.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppTND.Upscaling.FSR3">
+			<HintPath>$(GameAssembliesPath)/Il2CppTND.Upscaling.FSR3.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppTND.Upscaling.HDRP.DLSS">
+			<HintPath>$(GameAssembliesPath)/Il2CppTND.Upscaling.HDRP.DLSS.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppTriInspector">
+			<HintPath>$(GameAssembliesPath)/Il2CppTriInspector.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppUniTask.Addressables">
+			<HintPath>$(GameAssembliesPath)/Il2CppUniTask.Addressables.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppUniTask">
+			<HintPath>$(GameAssembliesPath)/Il2CppUniTask.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppXGamingRuntime">
+			<HintPath>$(GameAssembliesPath)/Il2CppXGamingRuntime.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppZLinq">
+			<HintPath>$(GameAssembliesPath)/Il2CppZLinq.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppZLinq.Unity">
+			<HintPath>$(GameAssembliesPath)/Il2CppZLinq.Unity.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppZString">
+			<HintPath>$(GameAssembliesPath)/Il2CppZString.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2Cpp__Generated">
+			<HintPath>$(GameAssembliesPath)/Il2Cpp__Generated.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Addressables">
+			<HintPath>$(GameAssembliesPath)/Unity.Addressables.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Burst">
+			<HintPath>$(GameAssembliesPath)/Unity.Burst.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Burst.Unsafe">
+			<HintPath>$(GameAssembliesPath)/Unity.Burst.Unsafe.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Cinemachine">
+			<HintPath>$(GameAssembliesPath)/Unity.Cinemachine.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Collections">
+			<HintPath>$(GameAssembliesPath)/Unity.Collections.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Collections.LowLevel.ILSupport">
+			<HintPath>$(GameAssembliesPath)/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.InputSystem">
+			<HintPath>$(GameAssembliesPath)/Unity.InputSystem.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.InputSystem.ForUI">
+			<HintPath>$(GameAssembliesPath)/Unity.InputSystem.ForUI.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.InternalAPIEngineBridge.004">
+			<HintPath>$(GameAssembliesPath)/Unity.InternalAPIEngineBridge.004.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Mathematics">
+			<HintPath>$(GameAssembliesPath)/Unity.Mathematics.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.MemoryProfiler">
+			<HintPath>$(GameAssembliesPath)/Unity.MemoryProfiler.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.RenderPipelines.Core.Runtime">
+			<HintPath>$(GameAssembliesPath)/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.RenderPipelines.Core.Samples.Runtime">
+			<HintPath>$(GameAssembliesPath)/Unity.RenderPipelines.Core.Samples.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
+			<HintPath>$(GameAssembliesPath)/Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
+			<HintPath>$(GameAssembliesPath)/Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
+			<HintPath>$(GameAssembliesPath)/Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.RenderPipelines.HighDefinition.Samples.Common.Runtime">
+			<HintPath>$(GameAssembliesPath)/Unity.RenderPipelines.HighDefinition.Samples.Common.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.ResourceManager">
+			<HintPath>$(GameAssembliesPath)/Unity.ResourceManager.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Splines">
+			<HintPath>$(GameAssembliesPath)/Unity.Splines.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<HintPath>$(GameAssembliesPath)/Unity.TextMeshPro.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Timeline">
+			<HintPath>$(GameAssembliesPath)/Unity.Timeline.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.UnifiedRayTracing.Runtime">
+			<HintPath>$(GameAssembliesPath)/Unity.UnifiedRayTracing.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.VisualEffectGraph.Runtime">
+			<HintPath>$(GameAssembliesPath)/Unity.VisualEffectGraph.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AccessibilityModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.AccessibilityModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AdaptivePerformanceModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.AdaptivePerformanceModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AIModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.AIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AMDModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.AMDModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AndroidJNIModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.AndroidJNIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AnimationModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.AnimationModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ARModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.ARModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AssetBundleModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.AssetBundleModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AudioModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.AudioModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ClothModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.ClothModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ContentLoadModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.ContentLoadModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CrashReportingModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.CrashReportingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.DirectorModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.DirectorModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.DSPGraphModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.DSPGraphModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.GameCenterModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.GameCenterModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.GIModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.GIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.GraphicsStateCollectionSerializerModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.GraphicsStateCollectionSerializerModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.GridModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.GridModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.HierarchyCoreModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.HierarchyCoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.HierarchyModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.HierarchyModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.HotReloadModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.HotReloadModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.IdentifiersModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.IdentifiersModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.ImageConversionModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.IMGUIModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.IMGUIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputForUIModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.InputForUIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputLegacyModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.InputLegacyModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.InputModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InsightsModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.InsightsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.JSONSerializeModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.JSONSerializeModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.LocalizationModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.LocalizationModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.MarshallingModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.MarshallingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.MultiplayerModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.MultiplayerModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.NVIDIAModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.NVIDIAModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ParticleSystemModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.ParticleSystemModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PerformanceReportingModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.PerformanceReportingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Physics2DModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.Physics2DModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PhysicsBackendPhysXModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.PhysicsBackendPhysXModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PhysicsModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.PhysicsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PropertiesModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.PropertiesModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.RenderAs2DModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.RenderAs2DModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ScreenCaptureModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.ScreenCaptureModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ShaderRuntimeModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.ShaderRuntimeModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ShaderVariantAnalyticsModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.ShaderVariantAnalyticsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SharedInternalsModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.SharedInternalsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SpriteMaskModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.SpriteMaskModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SpriteShapeModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.SpriteShapeModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.StreamingModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.StreamingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SubstanceModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.SubstanceModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SubsystemsModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.SubsystemsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TerrainModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.TerrainModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TerrainPhysicsModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextCoreFontEngineModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextCoreTextEngineModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextRenderingModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.TextRenderingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TilemapModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.TilemapModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TLSModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.TLSModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIElementsModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UIElementsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UmbraModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UmbraModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityAnalyticsModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityConnectModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UnityConnectModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityConsentModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UnityConsentModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityCurlModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UnityCurlModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestAudioModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UnityWebRequestModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestTextureModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestWWWModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VectorGraphicsModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.VectorGraphicsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VehiclesModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.VehiclesModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VFXModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.VFXModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VideoModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.VideoModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VRModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.VRModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.WindModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.WindModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.XRModule">
+			<HintPath>$(GameAssembliesPath)/UnityEngine.XRModule.dll</HintPath>
+		</Reference>
+		<Reference Include="MelonLoader">
+			<HintPath>$(LoaderAssembliesPath)/MelonLoader.dll</HintPath>
+		</Reference>
+		<Reference Include="0Harmony">
+			<HintPath>$(LoaderAssembliesPath)/0Harmony.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppInterop.Runtime">
+			<HintPath>$(LoaderAssembliesPath)/Il2CppInterop.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppInterop.Common">
+			<HintPath>$(LoaderAssembliesPath)/Il2CppInterop.Common.dll</HintPath>
+		</Reference>
+
+	</ItemGroup>
+
+	<PropertyGroup>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="SpawnCars.cs" />
+		<Content Include="Directory.Build.props" />
+	</ItemGroup>
+	
+	<Target Name="DeployOutput" AfterTargets="Build" Condition="'$(DeployOnBuild)' == 'true'">
+		<Error Condition="'$(GamePath)' == '' Or !Exists('$(GamePath)')" Text="Set GamePath to an existing game installation or disable DeployOnBuild." />
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GamePath)/Mods" SkipUnchangedFiles="true" />
+	</Target>
+</Project>

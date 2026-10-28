@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <GamePath>D:\Steam\steamapps\common\Car Mechanic Simulator 2026 Demo</GamePath>
+    <GameAssembliesPath>$(GamePath)/MelonLoader/Il2CppAssemblies</GameAssembliesPath>
+    <LoaderAssembliesPath>$(GamePath)/MelonLoader/net6</LoaderAssembliesPath>
+    <DeployOnBuild>true</DeployOnBuild>
+  </PropertyGroup>
+</Project>
