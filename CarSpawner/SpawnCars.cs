@@ -1,15 +1,13 @@
 ﻿using Il2Cpp;
 using Il2CppCMS.Core;
 using Il2CppCMS.Core.Car;
-using Il2CppCMS.Managers.ActionsManager;
 using Il2CppCMS.UI;
-using Il2CppCMS.UI.Windows;
 using MelonLoader;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[assembly: MelonInfo(typeof(CarSpawner.SpawnCars), "CarSpawner", "1.0.0", "mannly01", "https://www.nexusmods.com/carmechanicsimulator2027/mods/21")]
+[assembly: MelonInfo(typeof(CarSpawner.SpawnCars), "CarSpawner", "1.0.1", "mannly01", "https://www.nexusmods.com/carmechanicsimulator2027/mods/21")]
 [assembly: MelonGame("Red Dot Games", "Car Mechanic Simulator 2027 Demo")]
 
 namespace CarSpawner
@@ -128,8 +126,6 @@ namespace CarSpawner
             {
                 // This is a test key that should not be shipped with a release.
                 MelonLogger.Msg("DEBUG Key (J) Pressed.");
-
-                AddLiftersToQuickMenu();
             }
 #endif
 
@@ -246,7 +242,21 @@ namespace CarSpawner
 #endif
                                 if (i < 3)
                                 {
-                                    carLoader.MoveToCarPlaceInstant(CarPlace.AdditionalGarageParking);
+                                    //carLoader.MoveToCarPlaceInstant(CarPlace.AdditionalGarageParking);
+                                    switch (i)
+                                    {
+                                        case 0:
+                                            carLoader.ChangePosition(CarPlace.CarLifter1);
+                                            break;
+                                        case 1:
+                                            carLoader.ChangePosition(CarPlace.Entrance2);
+                                            break;
+                                        case 2:
+                                            carLoader.ChangePosition(CarPlace.Entrance3);
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                 }
                                 carLoader.ShowNewCarWaitingPopup = true;
                                 Il2CppCMS.UI.Markers.MapMarkersManager markersManager = Il2CppCMS.SceneLoaders.GarageLoader.Get().MapMarkersManager;
@@ -270,112 +280,6 @@ namespace CarSpawner
 
             yield return null;
         }
-
-#if DEBUG
-        public static void AddLiftersToQuickMenu()
-        {
-            MelonLogger.Msg($"IsQAWindowActive: {GameState.IsQuickActionsWindowActive}");
-            var windows = Resources.FindObjectsOfTypeAll<GameObject>().FirstOrDefault(go => go.name == "Windows");
-            if (windows != null)
-            {
-                var quickActionsWindow = windows.GetComponentInChildren<QuickActionsWindow>();
-                if (quickActionsWindow != null)
-                {
-                    var quickActions = quickActionsWindow.actions;
-                    var newActions = new QuickAction[3];
-                    foreach (var quickAction in quickActions)
-                    {
-                        if (quickAction.HaveAssignedAction)
-                        {
-                            MelonLogger.Msg($"Quick Action {quickAction.assignedAction.ID}: {quickAction.assignedAction.ActionName}");
-                            if (quickAction.assignedAction.ActionName.Contains("Gates"))
-                            {
-                                // This is the original Gates QuickAction.
-                                // Just add it back into the QuickActionsWindow.
-                                newActions[1] = quickAction.assignedAction;
-
-                                // Get the FillActions (GUI_Actions_ToggleGate) for the Lifters QuickAction.
-                                var fillActions = quickAction.assignedAction.FillActions;
-                                // Create a list to move the FillActions List into.
-                                var tempFillActions = new Il2CppSystem.Collections.Generic.List<QuickAction>();
-                                fillActions.Invoke(tempFillActions);
-                                // Create a temporary list to add the copied QuickActions into.
-                                var newTempFillActions = new Il2CppSystem.Collections.Generic.List<QuickAction>();
-                                if (tempFillActions.Count > 0)
-                                {
-                                    for (int j = 0; j < tempFillActions.Count; j++)
-                                    {
-                                        var tempFillAction = tempFillActions[j];
-                                        if (tempFillAction.ActionName.Contains("Gate"))
-                                        {
-                                            MelonLogger.Msg($"Temp Lifter Action {j}: {tempFillAction.ActionName}");
-                                            var newFillAction = new QuickAction()
-                                            {
-                                                Action = tempFillAction.Action,
-                                                ActionName = "GUI_Actions_ToggleLifter",
-                                                Blink = tempFillAction.Blink,
-                                                DrawOrder = tempFillAction.DrawOrder,
-                                                FillActions = tempFillAction.FillActions,
-                                                ID = tempFillAction.ID,
-                                                IsAvailable = tempFillAction.IsAvailable,
-                                                Type = tempFillAction.Type
-                                            };
-                                            newTempFillActions.Add(newFillAction);
-                                            MelonLogger.Msg($"New Lifter Action {j}: {newFillAction.ActionName}");
-                                        }
-                                    }
-                                }
-
-                                // This creates a new action, but still has the old "Gate" actions because we are using the fillActions pointer.
-                                var newTempFillAction = new Il2CppSystem.Action<Il2CppSystem.Collections.Generic.List<QuickAction>>(fillActions.Pointer);
-
-
-                                // This is to test the new fill action actions.
-                                var tempList = new Il2CppSystem.Collections.Generic.List<QuickAction>();
-                                newTempFillAction.Invoke(tempList);
-                                foreach (var tempFillAction in tempList)
-                                {
-                                    MelonLogger.Msg($"Delegate Action: {tempFillAction.ActionName}");
-                                }
-
-                                // Make a copy of the Gates QuickAction and change it to Lifters.
-                                var lifterQuickAction = new QuickAction()
-                                {
-                                    Action = quickAction.assignedAction.Action,
-                                    ActionName = "Lifters",
-                                    Blink = quickAction.assignedAction.Blink,
-                                    DrawOrder = quickAction.assignedAction.DrawOrder,
-                                    FillActions = quickAction.assignedAction.FillActions,
-                                    ID = quickAction.assignedAction.ID,
-                                    IsAvailable = quickAction.assignedAction.IsAvailable,
-                                    Type = quickAction.assignedAction.Type
-                                };
-                                // Add the Lifters QuickAction to the QuickActionsWindow.
-                                newActions[0] = lifterQuickAction;
-                            }
-                            else if (quickAction.assignedAction.ActionName.Contains("Flashlight"))
-                            {
-                                // This is the original Flashlight QuickAction.
-                                // Just add it back into the QuickActionsWindow.
-                                newActions[2] = quickAction.assignedAction;
-                            }
-                        }
-                    }
-                    if (!quickActionsWindow.IsInSubMenu)
-                    {
-                        // Convert the array back to a list preserving the draw order.
-                        var newActionsList = new Il2CppSystem.Collections.Generic.List<QuickAction>();
-                        for (int i = 0; i < newActions.Length; i++)
-                        {
-                            newActionsList.Add(newActions[i]);
-                        }
-                        // Add the actions to the QuickActionsWindow.
-                        quickActionsWindow.DrawActions(newActionsList);
-                    }
-                }
-            }
-        } 
-#endif
 
         /// <summary>
         /// If the user is using the Search box,
